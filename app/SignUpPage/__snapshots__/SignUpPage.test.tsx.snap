@@ -1,0 +1,153 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SignUpPage > renders component 1`] = `
+<DocumentFragment>
+  <div
+    class="_container_7a633c"
+  >
+    <h1
+      class="_xl_bcfef7 _header_7a633c"
+    >
+      Create your pokemon user account!
+    </h1>
+    <form
+      class="_form_7a633c"
+      data-testid="signup"
+    >
+      <div
+        class="_fields_7a633c"
+      >
+        <fieldset
+          class="_container_3e604f _container_530055"
+        >
+          <label
+            for="email"
+          >
+            <p
+              class="_md_bcfef7 _text_3e604f"
+            >
+              Email
+            </p>
+          </label>
+          <input
+            id="email"
+            name="email"
+            value=""
+          />
+          <div
+            class="_default_530055"
+          />
+        </fieldset>
+        <fieldset
+          class="_container_3e604f _container_530055"
+        >
+          <label
+            for="firstname"
+          >
+            <p
+              class="_md_bcfef7 _text_3e604f"
+            >
+              First Name
+            </p>
+          </label>
+          <input
+            id="firstname"
+            name="firstname"
+            value=""
+          />
+          <div
+            class="_default_530055"
+          />
+        </fieldset>
+        <fieldset
+          class="_container_3e604f _container_530055"
+        >
+          <label
+            for="lastname"
+          >
+            <p
+              class="_md_bcfef7 _text_3e604f"
+            >
+              Last Name
+            </p>
+          </label>
+          <input
+            id="lastname"
+            name="lastname"
+            value=""
+          />
+          <div
+            class="_default_530055"
+          />
+        </fieldset>
+        <fieldset
+          class="_container_3e604f _container_530055"
+        >
+          <label
+            for="password"
+          >
+            <p
+              class="_md_bcfef7 _text_3e604f"
+            >
+              Password
+            </p>
+          </label>
+          <input
+            id="password"
+            name="password"
+            type="password"
+            value=""
+          />
+          <div
+            class="_default_530055"
+          />
+        </fieldset>
+        <fieldset
+          class="_container_3e604f _container_530055"
+        >
+          <label
+            for="confirmPassword"
+          >
+            <p
+              class="_md_bcfef7 _text_3e604f"
+            >
+              Confirm Password
+            </p>
+          </label>
+          <input
+            id="confirmPassword"
+            name="confirmPassword"
+            type="password"
+            value=""
+          />
+          <div
+            class="_default_530055"
+          />
+        </fieldset>
+      </div>
+      <div
+        class="_buttons_7a633c"
+      >
+        <button
+          class="_container_f8f296 _primary_f8f296 _medium_f8f296"
+        >
+          Sign up
+        </button>
+        <a
+          href="/pokemons"
+        >
+          <button
+            class="_container_f8f296 _secondary_f8f296 _medium_f8f296"
+            type="button"
+          >
+            Continue as Guest
+          </button>
+        </a>
+      </div>
+    </form>
+  </div>
+  <div
+    class="Toastify"
+  />
+</DocumentFragment>
+`;

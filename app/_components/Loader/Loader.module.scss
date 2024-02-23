@@ -1,0 +1,55 @@
+.container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pokeball {
+  $border-color: var(--color-gray-1);
+  margin: 5rem;
+
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  border: 0.5rem solid $border-color;
+  background-image: linear-gradient(var(--color-red-3) 5rem, white 5rem);
+  position: relative;
+  animation: load 2s infinite;
+
+  &::before {
+    position: absolute;
+    content: '';
+    height: 0.5rem;
+    width: 100%;
+    background-color: $border-color;
+    top: 45%;
+    left: 0;
+  }
+
+  &::after {
+    position: absolute;
+    content: '';
+    height: 3rem;
+    width: 3rem;
+    background-image: radial-gradient(
+      white 0,
+      white 0.4rem,
+      $border-color 0.4rem,
+      $border-color 0.7rem,
+      white 0.7rem,
+      white 1rem,
+      $border-color 1rem,
+      $border-color 1.5rem
+    );
+    top: 34%;
+    left: 35%;
+    border-radius: 50%;
+  }
+}
+
+@keyframes load {
+  50% {
+    transform: scale(0.7);
+  }
+}

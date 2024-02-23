@@ -1,0 +1,51 @@
+:root {
+  --color-fire: #ff7402;
+  --color-grass: #9bcc50;
+  --color-steel: #9eb7b8;
+  --color-water: #4592c4;
+  --color-psychic: #f366b9;
+  --color-ground: #ab9842;
+  --color-ice: #51c4e7;
+  --color-flying: #3dc7ef;
+  --color-ghost: #4d5b64;
+  --color-normal: #a4acaf;
+  --color-poison: #7e0058;
+  --color-rock: #a38c21;
+  --color-fighting: #d56723;
+  --color-dark: #707070;
+  --color-bug: #729f3f;
+  --color-dragon: #b65f83;
+  --color-electric: #bba909;
+  --color-fairy: #fdb9e9;
+  --color-shadow: #7b62a3;
+  --color-unknow: #757575;
+  --color-primary: #006d77;
+  --color-primary-hover: #83c5be;
+
+  --color-gray-1: #343b4f;
+  --color-gray-2: #3f3f3f;
+  --color-gray-3: #555555;
+  --color-gray-4: #949393;
+  --color-gray-5: #acacac;
+  --color-gray-6: #b3b3b3;
+  --color-purple-1: #444474;
+  --color-purple-2: #3b3e85;
+  --color-purple-3: #400dbe;
+  --color-purple-4: #5a1ef1;
+  --color-purple-5: #7677c2;
+  --color-purple-6: #8f90d3;
+  --color-red-1: #aa0823;
+  --color-red-2: #dc0a2d;
+  --color-red-3: #f51939;
+  --color-red-4: #f54b65;
+  --color-red-5: #e27686;
+  --color-red-6: #e7a2ad;
+  --color-white-1: #dfdfdf;
+  --color-white-2: #e2e2e2;
+  --color-white-3: #f6f6f7;
+  --color-white-4: #d9d9dd;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}

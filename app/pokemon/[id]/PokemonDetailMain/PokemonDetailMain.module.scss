@@ -1,0 +1,27 @@
+.container {
+  width: 100%;
+  display: grid;
+  align-items: center;
+}
+
+.title {
+  margin: 1rem;
+}
+
+.types {
+  justify-self: center;
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.sprite {
+  justify-self: center;
+  border-radius: 0.4rem;
+  width: 100%;
+  height: 250px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

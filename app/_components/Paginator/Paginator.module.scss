@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin: 1rem 0;
+  width: 100%;
+
+  .page {
+    width: 3rem;
+    background-color: var(--color-purple-6);
+    &:hover {
+      background-color: var(--color-purple-5);
+    }
+  }
+
+  .dots {
+    font-size: large;
+  }
+
+  .arrow {
+    background-color: var(--color-gray-2);
+    color: white;
+    &:hover {
+      background-color: var(--color-gray-3);
+    }
+
+    &:disabled {
+      background-color: var(--color-gray-4);
+    }
+  }
+
+  .current {
+    background-color: var(--color-purple-2);
+  }
+}

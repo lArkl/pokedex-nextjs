@@ -1,0 +1,23 @@
+.container {
+  margin: 0 auto;
+  max-width: 20rem;
+}
+
+.fields {
+  padding: 1rem 0 2rem 0;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.buttons {
+  display: grid;
+  gap: 1rem;
+
+  button {
+    width: 100%;
+  }
+}
+
+.search {
+  background-color: black;
+}

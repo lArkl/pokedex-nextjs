@@ -1,0 +1,20 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Fieldset > renders component 1`] = `
+<DocumentFragment>
+  <fieldset
+    class="_container_3e604f"
+  >
+    <label
+      for="field"
+    >
+      <p
+        class="_md_bcfef7 _text_3e604f"
+      >
+        field
+      </p>
+    </label>
+    Form field set
+  </fieldset>
+</DocumentFragment>
+`;

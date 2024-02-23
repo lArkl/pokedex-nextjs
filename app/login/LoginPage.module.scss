@@ -1,0 +1,45 @@
+.container {
+  width: 100%;
+}
+
+.header {
+  margin: 3rem 0;
+  font-size: 3rem;
+  text-align: center;
+}
+
+.loader {
+  margin: 2rem;
+}
+
+.powered {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.icons {
+  margin: 1rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.search {
+  margin: 1rem;
+  background-color: black;
+  width: auto;
+}
+
+.reactIcon :global {
+  animation-name: logo-spin;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.welcome {
+  display: grid;
+  justify-items: center;
+  gap: 1rem;
+}

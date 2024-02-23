@@ -1,0 +1,11 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Typography > renders component 1`] = `
+<DocumentFragment>
+  <p
+    class="_sm_bcfef7"
+  >
+    text
+  </p>
+</DocumentFragment>
+`;

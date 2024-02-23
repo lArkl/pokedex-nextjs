@@ -1,0 +1,22 @@
+.list {
+  display: flex;
+  gap: 1rem;
+}
+
+.row {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+
+.header {
+  margin: 1.4rem 0;
+}
+
+.sprites {
+  display: flex;
+  gap: 1rem;
+  padding: 0.4rem;
+  grid-column: 1/3;
+}

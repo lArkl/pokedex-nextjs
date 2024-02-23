@@ -1,0 +1,37 @@
+.container {
+  margin: 0;
+  padding: 0.4rem 1rem;
+  border-radius: 0.2rem;
+  color: white;
+  border-style: solid;
+}
+
+.primary {
+  background-color: var(--color-red-2);
+
+  &:hover,
+  &:active {
+    background-color: var(--color-red-1);
+  }
+}
+
+.secondary {
+  background-color: var(--color-purple-4);
+
+  &:hover,
+  &:active {
+    background-color: var(--color-purple-3);
+  }
+}
+
+.small {
+  padding: 0.2rem 0.8rem;
+}
+
+.medium {
+  padding: 0.4rem 1rem;
+}
+
+.large {
+  padding: 0.8rem 1.6rem;
+}

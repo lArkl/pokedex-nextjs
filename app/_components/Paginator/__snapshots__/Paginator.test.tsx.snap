@@ -1,0 +1,56 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Paginator > renders component 1`] = `
+<DocumentFragment>
+  <ul
+    class="_container_f9550d"
+  >
+    <li
+      class="_item_f9550d"
+    >
+      <button
+        class="_container_f8f296 _primary_f8f296 _medium_f8f296 _arrow_f9550d"
+        disabled=""
+      >
+        &lt;
+      </button>
+    </li>
+    <li
+      class="_item_f9550d"
+    >
+      <button
+        class="_container_f8f296 _primary_f8f296 _medium_f8f296 _page_f9550d _current_f9550d"
+      >
+        1
+      </button>
+    </li>
+    <li
+      class="_item_f9550d"
+    >
+      <button
+        class="_container_f8f296 _primary_f8f296 _medium_f8f296 _page_f9550d"
+      >
+        2
+      </button>
+    </li>
+    <li
+      class="_item_f9550d"
+    >
+      <button
+        class="_container_f8f296 _primary_f8f296 _medium_f8f296 _page_f9550d"
+      >
+        3
+      </button>
+    </li>
+    <li
+      class="_item_f9550d"
+    >
+      <button
+        class="_container_f8f296 _primary_f8f296 _medium_f8f296 _arrow_f9550d"
+      >
+        &gt;
+      </button>
+    </li>
+  </ul>
+</DocumentFragment>
+`;

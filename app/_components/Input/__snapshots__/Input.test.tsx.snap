@@ -1,0 +1,19 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Input > renders component 1`] = `
+<DocumentFragment>
+  <form
+    data-testid="form"
+  >
+    <input
+      class="_container_859b20"
+      id="field"
+      name="field"
+      value=""
+    />
+    <button>
+      submit
+    </button>
+  </form>
+</DocumentFragment>
+`;

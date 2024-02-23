@@ -1,0 +1,58 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`LoginPage > renders component 1`] = `
+<DocumentFragment>
+  <div
+    class="_container_951041"
+  >
+    <h1
+      class="_xl_bcfef7 _header_951041"
+    >
+      Welcome to the Pokedex
+    </h1>
+    <div
+      aria-label="loading"
+      class="_container_d51639"
+      role="alert"
+    >
+      <div
+        class="_pokeball_d51639"
+      />
+    </div>
+    <div
+      class="_powered_951041"
+    >
+      <p
+        class="_md_bcfef7"
+      >
+        Powered by
+      </p>
+      <div
+        aria-label="icons"
+        class="_icons_951041"
+      >
+        <img
+          alt="vite icon"
+          src="/vite.svg"
+          width="50"
+        />
+        <img
+          alt="react icon"
+          class="_reactIcon_951041"
+          src="/react.svg"
+          width="50"
+        />
+      </div>
+    </div>
+    <a
+      href="/pokemons"
+    >
+      <button
+        class="_container_f8f296 _secondary_f8f296 _medium_f8f296 _search_951041"
+      >
+        Search Pokemons
+      </button>
+    </a>
+  </div>
+</DocumentFragment>
+`;

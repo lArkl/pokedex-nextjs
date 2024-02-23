@@ -1,0 +1,10 @@
+.list {
+  // width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.empty {
+  margin: 5rem;
+}
