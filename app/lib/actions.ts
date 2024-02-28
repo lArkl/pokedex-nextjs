@@ -1,6 +1,6 @@
 "use server";
 
-import { redirect, useSearchParams } from "next/navigation";
+import { redirect } from "next/navigation";
 import {
   ListItemDto,
   Option,
@@ -12,10 +12,23 @@ import {
   UserDto,
 } from "./types";
 import { PokemonFilterParams } from "../pokemons/PokemonListFilter/pokemonListFilter.utils";
+import { SignUpSchema } from "./validators";
 
-export async function signUpUser(p: any) {
-  // write something
-  // redirect
+export async function signUpUser(
+  data: SignUpSchema
+): Promise<ResponseDto<UserDto>> {
+  console.log(data);
+  const formData = new FormData();
+  Object.entries(data).forEach(([key, val]) => {
+    formData.append(key, val);
+  });
+
+  await fetch(`${process.env.API_ENDPOINT}/users/signup`, {
+    method: "POST",
+    body: formData,
+    cache: "no-cache",
+  });
+  redirect("/login");
 }
 
 export async function signInUser(params: {
@@ -57,18 +70,21 @@ export async function getPokemonsList(
   urlParams.append("pageSize", process.env.PAGE_SIZE ?? "");
 
   params.abilities?.forEach((ability) => {
-    urlParams.set(PokemonFilterParams.Abilities + "[]", ability);
+    urlParams.set(PokemonFilterParams.Abilities, ability);
   });
   params.types?.forEach((type) => {
-    urlParams.set(PokemonFilterParams.Types + "[]", type);
+    urlParams.set(PokemonFilterParams.Types, type);
   });
   if (params.name) {
     urlParams.set(PokemonFilterParams.Name, params.name);
   }
 
+  if (params.page) {
+    urlParams.set("page", params.page);
+  }
   const url = new URL(`${process.env.API_ENDPOINT}/pokemons`);
   url.search = urlParams.toString();
-  console.log(url.search);
+
   try {
     const response = await fetch(url);
     return response.json();

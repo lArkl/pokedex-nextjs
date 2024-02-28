@@ -1,11 +1,10 @@
 "use client";
 
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import styles from "./PokemonListFilter.module.scss";
 import { useForm } from "react-hook-form";
 import {
   FilterFormProps,
-  PokemonFilterParams,
   formatFilterParams,
   getPokemonAbilities,
   parseFilterParams,
@@ -26,15 +25,6 @@ interface PokemonListFilterProps {
 }
 
 const PokemonListFilter: FC<PokemonListFilterProps> = ({ pokemonTypes }) => {
-  const [abilityText, setAbilityText] = useState("");
-  // const { data: abilitiesList, isFetching: isFetchingAbilities } =
-  //   usePokemonAbilitesQuery({ name: abilityText }, abilityText.length > 3);
-
-  const handleInputChange = (inputText: string, meta: InputActionMeta) => {
-    if (meta.action !== "input-blur" && meta.action !== "menu-close") {
-      setAbilityText(inputText);
-    }
-  };
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
@@ -42,27 +32,6 @@ const PokemonListFilter: FC<PokemonListFilterProps> = ({ pokemonTypes }) => {
   const { control, handleSubmit, reset } = useForm<FilterFormProps>({
     defaultValues: { name: "", types: [] },
   });
-  const [abilities, setAbilities] = useState<Option[]>([]);
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      if (abilityText.length > 3) {
-        getPokemonAbilities({
-          name: abilityText,
-        }).then((response) => {
-          console.log(response);
-          const list = response.data.items?.map(({ id, name }) => ({
-            label: name,
-            value: id,
-          }));
-          setAbilities(list);
-        });
-      }
-    }, 500);
-    return () => {
-      clearTimeout(timeout);
-    };
-  }, [abilityText]);
 
   const action: () => void = handleSubmit(async (data) => {
     const params = formatFilterParams(data);
@@ -95,7 +64,7 @@ const PokemonListFilter: FC<PokemonListFilterProps> = ({ pokemonTypes }) => {
     };
     resetForm();
   }, [pokemonTypes, reset, searchParams]);
-
+  const timeoutRef = useRef<NodeJS.Timeout>();
   return (
     <form
       data-testid="list_filter"
@@ -108,13 +77,28 @@ const PokemonListFilter: FC<PokemonListFilterProps> = ({ pokemonTypes }) => {
       <Fieldset name="types" label="Pokemon Types">
         <MultiSelect options={pokemonTypes} name="types" control={control} />
       </Fieldset>
+
       <Fieldset name="abilities" label="Pokemon Abilities">
         <MultiSelect
-          options={abilities}
+          loadOptions={async (inputValue) => {
+            return new Promise((resolve) => {
+              if (timeoutRef.current) {
+                clearTimeout(timeoutRef.current);
+              }
+              timeoutRef.current = setTimeout(async () => {
+                getPokemonAbilities({ name: inputValue })
+                  .then(({ data }) => {
+                    return data.items.map(({ id, name }) => ({
+                      label: name,
+                      value: id,
+                    }));
+                  })
+                  .then(resolve);
+              }, 1000);
+            });
+          }}
           name="abilities"
           control={control}
-          // isLoading={isFetchingAbilities}
-          onInputChange={handleInputChange}
         />
       </Fieldset>
       <div className={styles.buttons}>

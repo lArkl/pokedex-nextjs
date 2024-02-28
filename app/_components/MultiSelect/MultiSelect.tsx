@@ -1,9 +1,6 @@
-import { useMemo, useState } from "react";
-import Select, {
-  CSSObjectWithLabel,
-  InputActionMeta,
-  MultiValue,
-} from "react-select";
+import { useMemo } from "react";
+import Select, { CSSObjectWithLabel, MultiValue } from "react-select";
+import Async from "react-select/async";
 import {
   Control,
   FieldValues,
@@ -20,21 +17,17 @@ export interface MultiSelectProps<TFieldValues extends FieldValues> {
   name: FieldPath<TFieldValues>;
   className?: string;
   maxLength?: number;
-  isLoading?: boolean;
-  inputValue?: string;
-  onInputChange?: (inputText: string, meta: InputActionMeta) => void;
+  loadOptions?: (inputValue: string) => Promise<Option[]>;
   options?: Option[];
   control: Control<TFieldValues>;
 }
 
-export default function MultiSelect<TFieldValues extends FieldValues>({
+export default function MultiSelectC<TFieldValues extends FieldValues>({
   name,
   maxLength = 3,
+  loadOptions,
   control,
   options,
-  isLoading,
-  inputValue,
-  onInputChange,
   className,
 }: MultiSelectProps<TFieldValues>) {
   const {
@@ -55,7 +48,6 @@ export default function MultiSelect<TFieldValues extends FieldValues>({
       ["aria-label"]: `${name}_multiselect`,
       inputId: name,
       className: classNames([styles.container, className]),
-      filterOption: null,
       styles: {
         control: (baseStyles: CSSObjectWithLabel) => ({
           ...baseStyles,
@@ -73,15 +65,19 @@ export default function MultiSelect<TFieldValues extends FieldValues>({
     [className, name, onChange]
   );
 
-  return (
+  return loadOptions ? (
+    <Async<Option, true>
+      {...valueProps}
+      {...props}
+      isMulti={true}
+      loadOptions={loadOptions}
+    />
+  ) : (
     <Select<Option, true>
       {...valueProps}
       {...props}
       isMulti={true}
       options={options}
-      onInputChange={onInputChange}
-      inputValue={inputValue}
-      isLoading={isLoading}
     />
   );
 }

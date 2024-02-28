@@ -35,3 +35,12 @@ export const signInSchema = z.object({
 });
 
 export type SignInSchema = z.infer<typeof signInSchema>;
+
+export const pokemonsParamsSchema = z.object({
+  name: z.string().optional(),
+  page: z.coerce.number().int().optional().default(1),
+  "abilities[]": z.coerce.number().int().array().optional(),
+  "types[]": z.coerce.number().int().array().optional(),
+});
+
+export type PokemonsParamsSchema = z.infer<typeof pokemonsParamsSchema>;

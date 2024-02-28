@@ -1,8 +1,8 @@
 import { ListItemDto, Option, PaginatedResponseDto } from "@/app/lib/types";
 
 export enum PokemonFilterParams {
-  Types = "types",
-  Abilities = "abilities",
+  Types = "types[]",
+  Abilities = "abilities[]",
   Name = "name",
 }
 
@@ -45,9 +45,14 @@ export const getPokemonAbilities = async (
 ): Promise<PaginatedResponseDto<ListItemDto>> => {
   const url = new URL("http://localhost:3000/api/abilities");
   const urlParams = new URLSearchParams();
-  Object.entries(params).forEach(([key, values]) => {
-    urlParams.append(key, values as string);
+
+  params.ids?.forEach((id) => {
+    urlParams.append("ids[]", id);
   });
+  if (params.name) {
+    urlParams.append(PokemonFilterParams.Name, params.name);
+  }
+
   url.search = urlParams.toString();
 
   const response = await fetch(url);
