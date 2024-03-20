@@ -6,12 +6,12 @@ import {
   Option,
   PaginatedResponseDto,
   PokemonDto,
+  PokemonFilterParams,
   PokemonItemDto,
   PokemonListParams,
   ResponseDto,
   UserDto,
 } from "./types";
-import { PokemonFilterParams } from "../pokemons/PokemonListFilter/pokemonListFilter.utils";
 import { SignUpSchema } from "./validators";
 
 export async function signUpUser(
@@ -31,28 +31,28 @@ export async function signUpUser(
   redirect("/login");
 }
 
-export async function signInUser(params: {
-  password: string;
-  email: string;
-}): Promise<UserDto & { token: string }> {
-  // write something
-  // axios.post<ResponseDto<UserDto & { token: string }>>(`${process.env.API_ENDPOINT}/users/signin`, fields)
-  const response = await fetch(`${process.env.API_ENDPOINT}/users/signin`, {
-    body: JSON.stringify(params),
-    cache: "no-cache",
-  });
-  return response.json();
-  // redirect
-}
+// export async function signInUser(params: {
+//   password: string;
+//   email: string;
+// }): Promise<UserDto & { token: string }> {
+//   // write something
+//   // axios.post<ResponseDto<UserDto & { token: string }>>(`${process.env.API_ENDPOINT}/users/signin`, fields)
+//   const response = await fetch(`${process.env.API_ENDPOINT}/users/signin`, {
+//     body: JSON.stringify(params),
+//     cache: "no-cache",
+//   });
+//   return response.json();
+//   // redirect
+// }
 
-export async function getUserData(): Promise<UserDto> {
-  return {
-    firstname: "first",
-    lastname: "last",
-    id: 1,
-    updatedAt: "",
-  };
-}
+// export async function getUserData(): Promise<UserDto> {
+//   return {
+//     firstname: "first",
+//     lastname: "last",
+//     id: 1,
+//     updatedAt: "",
+//   };
+// }
 
 export async function getPokemonTypes(): Promise<Option[]> {
   const response = await fetch(`${process.env.API_ENDPOINT}/types`);

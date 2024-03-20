@@ -6,12 +6,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "type-check": "tsc --noEmit -skipLibCheck && echo 'PASSED'",
     "lint": "next lint"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
     "classnames": "^2.5.1",
     "next": "14.0.4",
+    "next-auth": "^4.24.6",
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.50.1",

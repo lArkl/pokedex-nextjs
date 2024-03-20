@@ -1,64 +1,41 @@
+"use client";
+
 import { FC } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-// import { getRequestError } from '../../utils/error'
-// import { toast } from 'react-toastify'
-
-import styles from "./SignInForm.module.scss";
-// import { setUserToken } from '../../utils/auth'
-import { signInUser } from "../lib/actions";
-import { UserDto } from "../lib/types";
+import styles from "./login-form.module.scss";
 import FormInput from "../_components/FormInput/FormInput";
 import Button from "../_components/Button";
 import Link from "next/link";
 import { SignInSchema, signInSchema } from "../lib/validators";
+import { signIn } from "next-auth/react";
+import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
-interface SignInFormProps {
-  onSuccess: (user: UserDto) => void;
-  onError?: (error: Error) => void;
-}
-
-const SignInForm: FC<SignInFormProps> = ({ onSuccess, onError }) => {
-  const { control, handleSubmit, setError, reset } = useForm<SignInSchema>({
+const LoginForm: FC = () => {
+  const router = useRouter();
+  const { control, handleSubmit, setError } = useForm<SignInSchema>({
     resolver: zodResolver(signInSchema),
   });
-  // const { mutate } = useMutation({
-  //   mutationFn: (formData: SignInSchema) => {
-  //     return signInUserRequest(formData)
-  //   },
-  // })
-  const action: () => void = handleSubmit(async (data) => {
-    try {
-      signInUser(data);
-      // toast('Sign in successfully!', { type: 'success' })
-      // reset()
-      // setUserToken(data.data.token)
-      // onSuccess(data.data)
-    } catch (err) {
-      // toast(err.message, { type: 'error' })
+  const action: () => void = handleSubmit(async (formData) => {
+    const res = await signIn("credentials", { ...formData, redirect: false });
+    if (res?.error) {
+      const message =
+        res.error === "CredentialsSignin"
+          ? "Invalid credentials."
+          : "Something went wrong.";
+      setError("root", {
+        type: "required",
+        message,
+      });
+      toast(message, { type: "error" });
+    } else {
+      router.push("/pokemons");
+      router.refresh();
     }
   });
-  // const onSubmit = useCallback(
-  //   (formFields: SignInSchema) => {
-  // mutate(formFields, {
-  //   onSuccess: ({ data }) => {
-  // toast('Sign in successfully!', { type: 'success' })
-  // reset()
-  // setUserToken(data.data.token)
-  // onSuccess(data.data)
-  //   },
-  //   onError: (error) => {
-  //     const err = getRequestError(error)
-  //     toast(err.message, { type: 'error' })
-  //     setError('root', err)
-  //     onError?.(err)
-  //   },
-  // })
-  // },
-  //   [mutate, onError, onSuccess, reset, setError],
-  // )
   return (
-    <form data-testid="signin" className={styles.container} action={action}>
+    <form data-testid="signin" className={styles.container} onSubmit={action}>
       <div className={styles.fields}>
         <FormInput name="email" label="Email" control={control} />
         <FormInput
@@ -85,4 +62,4 @@ const SignInForm: FC<SignInFormProps> = ({ onSuccess, onError }) => {
   );
 };
 
-export default SignInForm;
+export default LoginForm;

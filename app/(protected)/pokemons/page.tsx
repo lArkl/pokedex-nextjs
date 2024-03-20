@@ -1,10 +1,8 @@
-import styles from "./PokemonListPage.module.scss";
-import Paginator from "../_components/Paginator";
 import PokemonListFilter from "./PokemonListFilter";
 import PokemonList from "./PokemonList";
-import { getPokemonTypes, getPokemonsList } from "../lib/actions";
-import { PokemonListParams } from "../lib/types";
-import { PokemonFilterParams } from "./PokemonListFilter/pokemonListFilter.utils";
+import { PokemonFilterParams, PokemonListParams } from "@/app/lib/types";
+import { getPokemonTypes, getPokemonsList } from "@/app/lib/actions";
+import Paginator from "@/app/_components/Paginator";
 
 export default async function PokemonListPage({
   searchParams,
@@ -49,7 +47,7 @@ export default async function PokemonListPage({
   const currentPage = isNaN(page) ? 1 : page;
 
   return (
-    <main className={styles.container}>
+    <div>
       <PokemonListFilter pokemonTypes={pokemonTypes} />
       <PokemonList pokemonList={pokemonsData.data.items} />
       <Paginator
@@ -57,6 +55,6 @@ export default async function PokemonListPage({
         totalCount={pokemonsData.data.count}
         pageSize={Number(process.env.PAGE_SIZE)}
       />
-    </main>
+    </div>
   );
 }

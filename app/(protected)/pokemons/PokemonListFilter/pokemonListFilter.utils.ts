@@ -1,10 +1,9 @@
-import { ListItemDto, Option, PaginatedResponseDto } from "@/app/lib/types";
-
-export enum PokemonFilterParams {
-  Types = "types[]",
-  Abilities = "abilities[]",
-  Name = "name",
-}
+import {
+  ListItemDto,
+  Option,
+  PaginatedResponseDto,
+  PokemonFilterParams,
+} from "@/app/lib/types";
 
 export interface FilterFormProps {
   name: string;

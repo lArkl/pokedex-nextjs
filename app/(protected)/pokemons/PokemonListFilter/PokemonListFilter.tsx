@@ -9,7 +9,6 @@ import {
   getPokemonAbilities,
   parseFilterParams,
 } from "./pokemonListFilter.utils";
-import { InputActionMeta } from "react-select";
 import { usePathname, useSearchParams } from "next/navigation";
 import Button from "@/app/_components/Button";
 import Fieldset from "@/app/_components/Fieldset";

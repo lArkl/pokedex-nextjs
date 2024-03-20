@@ -1,49 +1,22 @@
-import { FC } from "react";
-import styles from "./LoginPage.module.scss";
-// import useUserQuery from '../../hooks/useUserQuery'
+import styles from "./login.module.scss";
 import Typography from "../_components/Typography";
-import Link from "next/link";
 import Loader from "../_components/Loader";
 import Image from "next/image";
-import Button from "../_components/Button";
-import { getUserData } from "../lib/actions";
-// import { AppRoutes } from '../../routes/appRoutes'
+import LoginForm from "./login-form";
+import { authConfig } from "../auth.config";
+import { getServerSession } from "next-auth/next";
+import Welcome from "./welcome";
 
 export default async function Login() {
-  const userData = await getUserData();
-  // const { isFetching, data: userData, logoutUser } = useUserQuery()
+  const session = await getServerSession(authConfig);
+  const username = session?.user?.name;
   return (
     <main className={styles.container}>
       <Typography variant="xl" className={styles.header}>
         Welcome to the Pokedex
       </Typography>
       <Loader className={styles.loader} />
-      <div className={styles.welcome}>
-        <Typography variant="md">
-          Good to see you again {userData.firstname}!
-        </Typography>
-        <Link href="/pokemons">
-          <Button variant="secondary" type="button">
-            Search Pokemons
-          </Button>
-        </Link>
-        <Button
-          variant="secondary"
-          type="button"
-          className={styles.search}
-          // onClick={() => {
-          // logoutUser()
-          // }}
-        >
-          Logout
-        </Button>
-      </div>
-
-      {/* <SignInForm
-            onSuccess={() => {
-              navigate(AppRoutes.PokemonList)
-            }}
-          /> */}
+      {username ? <Welcome username={username} /> : <LoginForm />}
 
       <div className={styles.powered}>
         <Typography variant="md">Powered by</Typography>

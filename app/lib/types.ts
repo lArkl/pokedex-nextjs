@@ -75,3 +75,9 @@ export interface Option {
   label: string;
   value: number;
 }
+
+export enum PokemonFilterParams {
+  Types = "types[]",
+  Abilities = "abilities[]",
+  Name = "name",
+}

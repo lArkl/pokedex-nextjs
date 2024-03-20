@@ -25,21 +25,9 @@
   gap: 2rem;
 }
 
-.search {
-  margin: 1rem;
-  background-color: black;
-  width: auto;
-}
-
 .reactIcon :global {
   animation-name: logo-spin;
   animation-duration: 10s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
-}
-
-.welcome {
-  display: grid;
-  justify-items: center;
-  gap: 1rem;
 }
