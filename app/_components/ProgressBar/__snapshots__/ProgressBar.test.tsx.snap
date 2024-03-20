@@ -3,15 +3,15 @@
 exports[`ProgressBar > renders component 1`] = `
 <DocumentFragment>
   <div
-    class="_container_98c422"
+    class="_container_236f93"
     role="progressbar"
   >
     <div
-      class="_bar_98c422"
+      class="_bar_236f93"
       style="width: 0%;"
     >
       <div
-        class="_value_98c422"
+        class="_value_236f93"
       />
     </div>
   </div>

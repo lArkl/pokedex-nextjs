@@ -3,7 +3,7 @@
 exports[`Button > renders component 1`] = `
 <DocumentFragment>
   <button
-    class="_container_f8f296 _primary_f8f296 _medium_f8f296"
+    class="_container_70cf50 _primary_70cf50 _medium_70cf50"
   />
 </DocumentFragment>
 `;

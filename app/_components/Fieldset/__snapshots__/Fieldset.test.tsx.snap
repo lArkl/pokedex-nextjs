@@ -3,13 +3,13 @@
 exports[`Fieldset > renders component 1`] = `
 <DocumentFragment>
   <fieldset
-    class="_container_3e604f"
+    class="_container_36b2da"
   >
     <label
       for="field"
     >
       <p
-        class="_md_bcfef7 _text_3e604f"
+        class="_md_5ee93d _text_36b2da"
       >
         field
       </p>

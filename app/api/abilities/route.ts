@@ -1,5 +1,5 @@
-import { ListItemDto } from "@/app/lib/types";
-import { PokemonFilterParams } from "@/app/pokemons/PokemonListFilter/pokemonListFilter.utils";
+import { PokemonFilterParams } from "@/app/lib/types";
+// import { PokemonFilterParams } from "@/app/pokemons/PokemonListFilter/pokemonListFilter.utils";
 import { NextRequest } from "next/server";
 
 export async function GET(request: NextRequest) {

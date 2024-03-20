@@ -6,7 +6,7 @@ exports[`Input > renders component 1`] = `
     data-testid="form"
   >
     <input
-      class="_container_859b20"
+      class="_container_7b9583"
       id="field"
       name="field"
       value=""
