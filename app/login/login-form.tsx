@@ -20,10 +20,7 @@ const LoginForm: FC = () => {
   const action: () => void = handleSubmit(async (formData) => {
     const res = await signIn("credentials", { ...formData, redirect: false });
     if (res?.error) {
-      const message =
-        res.error === "CredentialsSignin"
-          ? "Invalid credentials."
-          : "Something went wrong.";
+      const message = res.error;
       setError("root", {
         type: "required",
         message,

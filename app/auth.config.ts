@@ -1,6 +1,7 @@
 import { NextAuthOptions } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { getUser } from "./repository";
+import { ErrorMessage } from "./lib/errors";
 
 export const authConfig = {
   pages: {
@@ -15,7 +16,7 @@ export const authConfig = {
       },
       async authorize(credentials, request) {
         if (!credentials?.email || !credentials.password) {
-          throw Error("incomplete credentails");
+          throw Error(ErrorMessage.incompleteCredentials);
         }
         const user = await getUser(credentials);
         return {

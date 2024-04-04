@@ -2,6 +2,7 @@ import bcrypt from "bcrypt";
 import * as schema from "../database/schema";
 import db from "../database/db";
 import { eq, sql } from "drizzle-orm";
+import { ErrorMessage } from "../lib/errors";
 
 const saltRounds = 12;
 
@@ -12,13 +13,13 @@ const getUserQuery = db.query.users
 export const getUser = async (params: { email: string; password: string }) => {
   const user = await getUserQuery.execute({ email: params.email });
   if (!user) {
-    throw Error("User not found");
+    throw Error(ErrorMessage.userNotFound);
   }
   const success = await bcrypt.compare(params.password, user.password);
   if (success) {
     return user;
   }
-  throw Error("Passwords don't match");
+  throw Error(ErrorMessage.incorrectPassword);
 };
 
 export const createUser = async (params: {
@@ -29,7 +30,7 @@ export const createUser = async (params: {
 }) => {
   const user = await getUserQuery.execute({ email: params.email });
   if (user) {
-    throw Error(`User with email ${params.email} already exists`);
+    throw Error(ErrorMessage.userExists);
   }
   const password = await bcrypt.hash(params.password, saltRounds);
   const newUser = await db
