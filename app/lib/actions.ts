@@ -13,46 +13,14 @@ import {
   UserDto,
 } from "./types";
 import { SignUpSchema } from "./validators";
+import { createUser } from "../repository";
 
 export async function signUpUser(
   data: SignUpSchema
 ): Promise<ResponseDto<UserDto>> {
-  console.log(data);
-  const formData = new FormData();
-  Object.entries(data).forEach(([key, val]) => {
-    formData.append(key, val);
-  });
-
-  await fetch(`${process.env.API_ENDPOINT}/users/signup`, {
-    method: "POST",
-    body: formData,
-    cache: "no-cache",
-  });
+  await createUser(data);
   redirect("/login");
 }
-
-// export async function signInUser(params: {
-//   password: string;
-//   email: string;
-// }): Promise<UserDto & { token: string }> {
-//   // write something
-//   // axios.post<ResponseDto<UserDto & { token: string }>>(`${process.env.API_ENDPOINT}/users/signin`, fields)
-//   const response = await fetch(`${process.env.API_ENDPOINT}/users/signin`, {
-//     body: JSON.stringify(params),
-//     cache: "no-cache",
-//   });
-//   return response.json();
-//   // redirect
-// }
-
-// export async function getUserData(): Promise<UserDto> {
-//   return {
-//     firstname: "first",
-//     lastname: "last",
-//     id: 1,
-//     updatedAt: "",
-//   };
-// }
 
 export async function getPokemonTypes(): Promise<Option[]> {
   const response = await fetch(`${process.env.API_ENDPOINT}/types`);
@@ -86,6 +54,7 @@ export async function getPokemonsList(
   url.search = urlParams.toString();
 
   try {
+    await new Promise((resolve) => setTimeout(resolve, 2000));
     const response = await fetch(url);
     return response.json();
   } catch (err) {
@@ -100,6 +69,7 @@ export async function getPokemonsList(
 export const getPokemonFromId = async (
   id: string
 ): Promise<ResponseDto<PokemonDto>> => {
+  await new Promise((resolve) => setTimeout(resolve, 2000));
   const response = await fetch(`${process.env.API_ENDPOINT}/pokemon/${id}`);
   return response.json();
 };

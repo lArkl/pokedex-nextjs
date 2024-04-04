@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, useEffect, useRef, useState } from "react";
+import { FC, useEffect, useRef } from "react";
 import styles from "./PokemonListFilter.module.scss";
 import { useForm } from "react-hook-form";
 import {

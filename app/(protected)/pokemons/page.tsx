@@ -1,8 +1,8 @@
 import PokemonListFilter from "./PokemonListFilter";
 import PokemonList from "./PokemonList";
 import { PokemonFilterParams, PokemonListParams } from "@/app/lib/types";
-import { getPokemonTypes, getPokemonsList } from "@/app/lib/actions";
 import Paginator from "@/app/_components/Paginator";
+import { queryPokemonTypes, queryPokemonsList } from "@/app/repository";
 
 export default async function PokemonListPage({
   searchParams,
@@ -36,12 +36,12 @@ export default async function PokemonListPage({
     }
   }
 
-  const pokemonsData = await getPokemonsList({
+  const pokemonsData = await queryPokemonsList({
     ...searchParams,
     abilities,
     types,
   });
-  const pokemonTypes = await getPokemonTypes();
+  const pokemonTypes = await queryPokemonTypes();
 
   const page = searchParams?.page ? parseInt(searchParams?.page) : 1;
   const currentPage = isNaN(page) ? 1 : page;

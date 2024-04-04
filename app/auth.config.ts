@@ -1,5 +1,6 @@
 import { NextAuthOptions } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
+import { getUser } from "./repository";
 
 export const authConfig = {
   pages: {
@@ -11,36 +12,17 @@ export const authConfig = {
       credentials: {
         email: { type: "text" },
         password: { type: "password" },
-        // firstname: { type: "text" },
-        // lastname: { type: "text" },
       },
       async authorize(credentials, request) {
-        const response = await fetch(
-          `${process.env.API_ENDPOINT}/users/signin`,
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(credentials),
-            method: "POST",
-            cache: "no-cache",
-          }
-        );
-        const jsonResponse = await response.json();
-        if (jsonResponse.error) {
-          throw jsonResponse;
+        if (!credentials?.email || !credentials.password) {
+          throw Error("incomplete credentails");
         }
-
+        const user = await getUser(credentials);
         return {
-          id: jsonResponse.data.id,
-          name: `${jsonResponse.data.firstname} ${jsonResponse.data.lastname}`,
-          email: "",
+          id: user.id.toString(),
+          name: `${user.firstname} ${user.lastname}`,
+          email: user.email,
         };
-        // return {
-        //   id: jsonResponse.data.id,
-        //   name: `${jsonResponse.data.firstname} ${jsonResponse.data.lastname}`,
-        //   email: "",
-        // };
       },
     }),
   ],
