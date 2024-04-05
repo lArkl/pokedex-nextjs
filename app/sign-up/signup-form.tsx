@@ -1,11 +1,6 @@
 "use client";
-// import { FC } from 'react'
+
 import styles from "./SignUpPage.module.scss";
-// import Button from '../../components/Button'
-// import { useForm } from 'react-hook-form'
-// import { useMutation } from '@tanstack/react-query'
-// import { signUpUserRequest } from '../../requests/user.requests'
-// import { isAxiosError } from 'axios'
 import Link from "next/link";
 import Button from "../_components/Button";
 import FormInput from "../_components/FormInput/FormInput";
