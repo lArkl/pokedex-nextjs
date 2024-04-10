@@ -42,7 +42,9 @@ export const parseFilterParams = (searchParams: URLSearchParams) => {
 export const getPokemonAbilities = async (
   params: Partial<{ name: string; ids: string[] }>
 ): Promise<PaginatedResponseDto<ListItemDto>> => {
-  const url = new URL(`${process.env.NEXTAUTH_URL}/api/abilities`);
+  const url = new URL(
+    `${window.location.protocol}//${window.location.host}/api/abilities`
+  );
   const urlParams = new URLSearchParams();
 
   params.ids?.forEach((id) => {
